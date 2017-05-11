@@ -1,0 +1,586 @@
+unset key protection enable
+set clock ntp
+set clock timezone 7
+set clock dst recurring start-weekday 2 0 3 02:00 end-weekday 1 0 11 02:00
+set vrouter trust-vr sharable
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+unset auto-route-export
+exit
+set service "60443" protocol tcp src-port 0-65535 dst-port 60443-60443 
+set service "3306" protocol tcp src-port 0-65535 dst-port 3306-3306 
+set service "8009" protocol tcp src-port 0-65535 dst-port 8009-8009 
+set service "8081" protocol tcp src-port 0-65535 dst-port 8081-8081 
+set service "9009" protocol tcp src-port 0-65535 dst-port 9009-9009 
+set service "8082" protocol tcp src-port 0-65535 dst-port 8082-8082 
+set service "9080" protocol tcp src-port 0-65535 dst-port 9080-9080 
+set service "9090" protocol tcp src-port 0-65535 dst-port 9090-9090 
+set service "SSHJUMP" protocol tcp src-port 0-65535 dst-port 8102-8102 
+set service "SMPP_2776" protocol tcp src-port 0-65535 dst-port 2776-2776 
+set service "SMPP_2777" protocol tcp src-port 0-65535 dst-port 2777-2777 
+set service "ZOO_2181" protocol tcp src-port 0-65535 dst-port 2181-2181 
+set service "RMI_DR" protocol tcp src-port 0-65535 dst-port 1099-1099 
+set service "RMI_DR" + tcp src-port 0-65535 dst-port 22301-22301 
+set service "RMI_DR" + tcp src-port 0-65535 dst-port 30300-30300 
+set service "Nagios(5666)" protocol tcp src-port 0-65535 dst-port 5666-5666 
+set service "8080" protocol tcp src-port 0-65535 dst-port 8080-8080 
+set service "SCTP" protocol tcp src-port 0-65535 dst-port 7682-7682 
+set service "51234" protocol tcp src-port 0-65535 dst-port 51234-51234 
+set service "65432_to_65535" protocol tcp src-port 0-65535 dst-port 65432-65535 
+set service "SMPPTrial_3776" protocol tcp src-port 0-65535 dst-port 3776-3776 
+set service "SMPPTrial_3777" protocol tcp src-port 0-65535 dst-port 3777-3777 
+set service "61616" protocol tcp src-port 0-65535 dst-port 61616-61616 
+set service "5903" protocol tcp src-port 0-65535 dst-port 5903-5903 
+set service "30300" protocol tcp src-port 0-65535 dst-port 30300-30300 
+set service "2099" protocol tcp src-port 0-65535 dst-port 2099-2099 
+set service "22406" protocol tcp src-port 0-65535 dst-port 22406-22406 
+set service "22407" protocol tcp src-port 0-65535 dst-port 22407-22407 
+set service "22363" protocol tcp src-port 0-65535 dst-port 22363-22363 
+set service "22366" protocol tcp src-port 0-65535 dst-port 22366-22366 
+set service "Zabbix(10050)" protocol tcp src-port 0-65535 dst-port 10050-10050 
+set service "65444" protocol tcp src-port 0-65535 dst-port 65444-65444 
+set service "42443" protocol tcp src-port 0-65535 dst-port 42443-42443 
+set alg appleichat enable
+unset alg appleichat re-assembly enable
+unset alg dns enable
+set alg sctp enable
+set auth-server "Local" id 0
+set auth-server "Local" server-name "Local"
+set auth default auth server "Local"
+set auth radius accounting port 1646
+set admin name "htadmin"
+set admin password "nFnbGirqHnrNcMUMMs2P5JAtOuN9fn"
+set admin user "jamesoon" password "nPUMFHrwBSOFclNMPsIDm3ItrfMv/n" privilege "all"
+set admin user "sam" password "nFofACrLLk6HcQnPLs5KcUDtXMFwvn" privilege "all"
+set admin user "calvin" password "nHwNJGrKCdlMcU/LHsDBKIItxuHUvn" privilege "all"
+set admin user "lester" password "nN6pDdrkD/1Ac89A/shBf2Bt8QPfyn" privilege "all"
+set admin port 8010
+set admin access attempts 5
+set admin ssh port 2222
+set admin http redirect
+set admin mail server-name "10.26.4.204"
+set admin mail mail-addr1 "jamesonn@hello-technology.com"
+set admin mail mail-addr2 "ops@hello-technology.com"
+set admin auth web timeout 0
+set admin auth dial-in timeout 3
+set admin auth server "Local"
+set admin format dos
+set zone "Trust" vrouter "trust-vr"
+set zone "Untrust" vrouter "untrust-vr"
+set zone "DMZ" vrouter "untrust-vr"
+set zone "VLAN" vrouter "trust-vr"
+set zone id 100 "DBS-Zone"
+set zone "DBS-Zone" vrouter "untrust-vr"
+set zone id 101 "Extranet-Trust"
+set zone id 102 "Extranet-DMZ"
+set zone "Extranet-DMZ" vrouter "untrust-vr"
+set zone id 103 "Router-Zone"
+set zone "Router-Zone" vrouter "untrust-vr"
+set zone "Untrust-Tun" vrouter "trust-vr"
+set zone "Trust" tcp-rst 
+unset zone "Untrust" block 
+unset zone "Untrust" tcp-rst 
+unset zone "V1-Trust" tcp-rst 
+unset zone "V1-Untrust" tcp-rst 
+set zone "DMZ" tcp-rst 
+unset zone "V1-DMZ" tcp-rst 
+unset zone "VLAN" tcp-rst 
+unset zone "DBS-Zone" tcp-rst 
+unset zone "Extranet-Trust" tcp-rst 
+unset zone "Extranet-DMZ" tcp-rst 
+unset zone "Router-Zone" tcp-rst 
+set zone "Untrust" screen tear-drop
+set zone "Untrust" screen syn-flood
+set zone "Untrust" screen ping-death
+set zone "Untrust" screen ip-filter-src
+set zone "Untrust" screen land
+set zone "V1-Untrust" screen tear-drop
+set zone "V1-Untrust" screen syn-flood
+set zone "V1-Untrust" screen ping-death
+set zone "V1-Untrust" screen ip-filter-src
+set zone "V1-Untrust" screen land
+set interface "ethernet0/0" zone "Trust"
+set interface "ethernet0/1" zone "DMZ"
+set interface "ethernet0/2" zone "DBS-Zone"
+set interface "ethernet0/3.1" tag 310 zone "Router-Zone"
+set interface "ethernet0/3.2" tag 320 zone "Router-Zone"
+set interface "bgroup0" zone "Null"
+unset interface vlan1 ip
+set interface ethernet0/0 ip 192.168.1.4/24
+set interface ethernet0/0 nat
+set interface ethernet0/1 ip 10.26.4.151/24
+set interface ethernet0/1 route
+set interface ethernet0/2 ip 10.88.1.251/24
+set interface ethernet0/2 route
+set interface ethernet0/3.1 ip 172.28.4.4/29
+set interface ethernet0/3.1 route
+set interface ethernet0/3.2 ip 172.17.255.122/28
+set interface ethernet0/3.2 route
+set interface "ethernet0/4" pmtu ipv4
+unset interface vlan1 bypass-others-ipsec
+unset interface vlan1 bypass-non-ip
+set interface ethernet0/0 ip manageable
+unset interface ethernet0/1 ip manageable
+unset interface ethernet0/2 ip manageable
+set interface ethernet0/3.1 ip manageable
+set interface ethernet0/3.2 ip manageable
+unset interface ethernet0/0 manage telnet
+set interface ethernet0/1 manage ssh
+set interface ethernet0/1 manage snmp
+set interface ethernet0/1 manage ssl
+set interface ethernet0/1 manage web
+set interface ethernet0/2 manage ping
+set interface ethernet0/2 manage ssh
+set interface ethernet0/3.1 manage ping
+set interface ethernet0/3.2 manage ping
+set interface vlan1 manage mtrace
+set interface ethernet0/1 vip 10.26.4.169 60443 "60443" 10.88.1.169
+set interface ethernet0/1 vip 10.26.4.170 60443 "60443" 10.88.1.170
+set interface "ethernet0/3.2" mip 172.17.255.113 host 10.88.1.169 netmask 255.255.255.255 vr "untrust-vr"
+set interface "ethernet0/3.2" mip 172.17.255.114 host 10.88.1.170 netmask 255.255.255.255 vr "untrust-vr"
+set interface "serial0/0" modem settings "USR" init "AT&F"
+set interface "serial0/0" modem settings "USR" active
+set interface "serial0/0" modem speed 115200
+set interface "serial0/0" modem retry 3
+set interface "serial0/0" modem interval 10
+set interface "serial0/0" modem idle-time 10
+set flow tcp-mss
+unset flow no-tcp-seq-check
+set flow tcp-syn-check
+unset flow tcp-syn-bit-check
+set flow reverse-route clear-text prefer
+set flow reverse-route tunnel always
+set console page 0
+set hostname 1nfw3
+set pki authority default scep mode "auto"
+set pki x509 default cert-path partial
+set dns host dns1 10.26.4.86 src-interface ethernet0/1
+set dns host dns2 8.8.8.8 src-interface ethernet0/1
+set dns host dns3 0.0.0.0
+set dns proxy
+set dns proxy enable
+set address "Untrust" "118.201.195.10/32" 118.201.195.10 255.255.255.255
+set address "Untrust" "118.201.195.13 /32" 118.201.195.13 255.255.255.255
+set address "Untrust" "118.201.195.8/29" 118.201.195.8 255.255.255.248
+set address "Untrust" "1nJumpHost" 172.16.188.188 255.255.255.255
+set address "Untrust" "CLX IP 1" 93.158.78.7 255.255.255.255
+set address "Untrust" "CLX IP 2" 209.95.131.9 255.255.255.255
+set address "Untrust" "CLX IP 3" 195.84.167.34 255.255.255.255
+set address "Untrust" "CLX IP 4" 195.84.167.35 255.255.255.255
+set address "Untrust" "Galaxy" 203.125.150.150 255.255.255.255
+set address "Untrust" "Netsize IP 1" 119.9.94.246 255.255.255.255
+set address "Untrust" "Netsize IP 2" 119.9.94.246 255.255.255.255
+set address "Untrust" "Nexmo IP 1" 108.168.254.189 255.255.255.255
+set address "Untrust" "Nexmo IP 2" 108.168.254.55 255.255.255.255
+set address "Untrust" "Nexmo IP 3" 108.168.254.224 255.255.255.255
+set address "Global" "10.88.1.0/24" 10.88.1.0 255.255.255.0
+set address "Global" "10.88.1.169" 10.88.1.169 255.255.255.255
+set address "Global" "10.88.1.170" 10.88.1.170 255.255.255.255
+set address "DMZ" "10.26.4.249" 10.26.4.249 255.255.255.255
+set address "DMZ" "10.4.0.156/32" 10.4.0.156 255.255.255.255
+set address "DMZ" "172.17.252.12/30" 172.17.252.12 255.255.255.252
+set address "DMZ" "172.17.252.188/30" 172.17.252.188 255.255.255.252
+set address "DMZ" "172.17.255.122/32(temp)" 172.17.255.122 255.255.255.255
+set address "DMZ" "172.17.255.125" 172.17.255.125 255.255.255.255
+set address "DMZ" "172.21.8.0/24" 172.21.8.0 255.255.255.0
+set address "DMZ" "172.21.8.150/32" 172.21.8.150 255.255.255.255
+set address "DMZ" "172.21.8.72/32" 172.21.8.72 255.255.255.255
+set address "DMZ" "172.21.8.73/32" 172.21.8.73 255.255.255.255
+set address "DMZ" "172.21.8.74/32" 172.21.8.74 255.255.255.255
+set address "DMZ" "172.21.8.83/32" 172.21.8.83 255.255.255.255
+set address "DMZ" "172.21.8.84/32" 172.21.8.84 255.255.255.255
+set address "DMZ" "172.21.8.90/32" 172.21.8.90 255.255.255.255
+set address "DMZ" "172.21.8.91/32" 172.21.8.91 255.255.255.255
+set address "DMZ" "172.22.8.0/24" 172.22.8.0 255.255.255.0
+set address "DMZ" "172.22.8.120/32" 172.22.8.120 255.255.255.255
+set address "DMZ" "172.22.8.133/32" 172.22.8.133 255.255.255.255
+set address "DMZ" "172.22.8.53/32" 172.22.8.53 255.255.255.255
+set address "DMZ" "1nnapdbsotpsvr1(10.26.4.80/32)" 10.26.4.80 255.255.255.255
+set address "DMZ" "1nnapgateway" 10.26.4.86 255.255.255.255
+set address "DMZ" "DBSOTP(10.26.4.80)" 10.26.4.80 255.255.255.255
+set address "DMZ" "Nagios(10.26.4.196 )" 10.26.4.196 255.255.255.255
+set address "DMZ" "Newton3" 10.26.4.195 255.255.255.255
+set address "DMZ" "Nile1(10.26.4.203/32)" 10.26.4.203 255.255.255.255
+set address "DMZ" "Nile2(10.26.4.209/32)" 10.26.4.209 255.255.255.255
+set address "DMZ" "Nongsngse-DMZ-FW(10.26.4.248/32)" 10.26.4.248 255.255.255.255
+set address "DMZ" "resrc-bcast1(10.26.4.83)" 10.26.4.83 255.255.255.255
+set address "DMZ" "resrc-bcast2(10.26.4.182)" 10.26.4.182 255.255.255.255
+set address "DMZ" "resrc-rt1(10.26.4.84)" 10.26.4.84 255.255.255.255
+set address "DMZ" "Rocky-1" 10.26.4.208 255.255.255.255
+set address "DMZ" "smoky-1" 10.26.1.218 255.255.255.255
+set address "DMZ" "smoky-2" 10.26.1.219 255.255.255.255
+set address "DMZ" "smoky-3" 10.26.1.220 255.255.255.255
+set address "DMZ" "smoky-4" 10.26.1.221 255.255.255.255
+set address "DMZ" "yumserver6" 10.26.4.5 255.255.255.255
+set address "DBS-Zone" "1ndbsaltdb(10.88.1.172/32)" 10.88.1.172 255.255.255.255
+set address "DBS-Zone" "1ndbsaltweb01(10.88.1.170/32)" 10.88.1.170 255.255.255.255
+set address "DBS-Zone" "1ndbsotpdb(10.88.1.171/32)" 10.88.1.171 255.255.255.255
+set address "DBS-Zone" "1ndbsotpweb01(10.88.1.169/32)" 10.88.1.169 255.255.255.255
+set address "DBS-Zone" "DBS-Zone(10.88.1.0/24)" 10.88.1.0 255.255.255.0
+set address "Extranet-Trust" "hazel-1" 192.168.100.51 255.255.255.255
+set address "Extranet-Trust" "hazel-2" 192.168.100.52 255.255.255.255
+set address "Extranet-Trust" "hazel-3" 192.168.100.53 255.255.255.255
+set address "Extranet-Trust" "wholesales-execsvr-1" 192.168.100.61 255.255.255.255
+set address "Extranet-Trust" "wholesales-execsvr-2" 192.168.100.62 255.255.255.255
+set address "Extranet-DMZ" "192.168.200.0/32" 192.168.200.0 255.255.255.0
+set address "Extranet-DMZ" "1netresrc(192.168.200.21/32)" 192.168.200.21 255.255.255.255
+set address "Extranet-DMZ" "1netsmsc (192.168.200.101/32)" 192.168.200.101 255.255.255.255
+set address "Extranet-DMZ" "1netsmsc (192.168.200.102/32)" 192.168.200.102 255.255.255.255
+set address "Extranet-DMZ" "cloud-1" 192.168.200.11 255.255.255.255
+set address "Extranet-DMZ" "cloud-2" 192.168.200.12 255.255.255.255
+set address "Extranet-DMZ" "nagios-ws" 192.168.200.100 255.255.255.255
+set address "Extranet-DMZ" "resrc-1" 192.168.200.21 255.255.255.255
+set address "Router-Zone" "10.26.4.195" 10.26.4.195 255.255.255.255
+set address "Router-Zone" "172.17.255.113" 172.17.255.113 255.255.255.255
+set address "Router-Zone" "172.17.255.114" 172.17.255.114 255.255.255.255
+set address "Router-Zone" "172.17.255.122" 172.17.255.122 255.255.255.255
+set address "Router-Zone" "172.17.255.123" 172.17.255.123 255.255.255.255
+set address "Router-Zone" "172.17.255.124" 172.17.255.124 255.255.255.255
+set address "Router-Zone" "172.17.255.125" 172.17.255.125 255.255.255.255
+set address "Router-Zone" "172.17.255.126" 172.17.255.126 255.255.255.255
+set address "Router-Zone" "172.21.8.0/24" 172.21.8.0 255.255.255.0
+set address "Router-Zone" "172.22.8.0/24" 172.22.8.0 255.255.255.0
+set group address "Untrust" "CLX wholesales IP addresses"
+set group address "Untrust" "CLX wholesales IP addresses" add "CLX IP 1"
+set group address "Untrust" "CLX wholesales IP addresses" add "CLX IP 2"
+set group address "Untrust" "CLX wholesales IP addresses" add "CLX IP 3"
+set group address "Untrust" "CLX wholesales IP addresses" add "CLX IP 4"
+set group address "Untrust" "Netsize wholesales IP addresses"
+set group address "Untrust" "Netsize wholesales IP addresses" add "Netsize IP 1"
+set group address "Untrust" "Netsize wholesales IP addresses" add "Netsize IP 2"
+set group address "Untrust" "Nexmo wholesales IP addresses"
+set group address "Untrust" "Nexmo wholesales IP addresses" add "Nexmo IP 1"
+set group address "Untrust" "Nexmo wholesales IP addresses" add "Nexmo IP 2"
+set group address "Untrust" "Nexmo wholesales IP addresses" add "Nexmo IP 3"
+set group address "DMZ" "DBS Servers"
+set group address "DMZ" "DBS Servers" add "172.21.8.150/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.72/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.73/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.74/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.83/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.84/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.90/32"
+set group address "DMZ" "DBS Servers" add "172.21.8.91/32"
+set group address "DMZ" "DBS Servers" add "172.22.8.120/32"
+set group address "DMZ" "DBS Servers" add "172.22.8.133/32"
+set group address "DMZ" "DBS Servers" add "172.22.8.53/32"
+set crypto-policy
+exit
+unset ike policy-checking
+set ike p1-proposal "G5-AES256-SHA1" preshare group5 esp aes256 sha-1 second 28800
+set ike p2-proposal "G5-AES-256-SHA1-P2" group5 esp aes256 sha-1 second 1800
+set ike respond-bad-spi 1
+set ike ikev2 ike-sa-soft-lifetime 60
+unset ike ikeid-enumeration
+unset ike dos-protection
+unset ipsec access-session enable
+set ipsec access-session maximum 5000
+set ipsec access-session upper-threshold 0
+set ipsec access-session lower-threshold 0
+set ipsec access-session dead-p2-sa-timeout 0
+unset ipsec access-session log-error
+unset ipsec access-session info-exch-connected
+unset ipsec access-session use-error-log
+set attack db sigpack base
+set attack db mode Update
+set attack db schedule daily 00:00
+set url protocol type sc-cpa
+set url protocol sc-cpa
+set category "Allowed" url "172.17.255.113/"
+set category "Allowed" url "172.21.8.73/"
+set category "Allowed" url "172.21.8.84/"
+set category "Allowed" url "172.21.8.91/"
+set profile "HT Production" other block
+set profile "HT Production" "Adult/Sexually Explicit" block
+set profile "HT Production" "Advertisements" block
+set profile "HT Production" "Arts & Entertainment" block
+set profile "HT Production" "Chat" block
+set profile "HT Production" "Computing & Internet" block
+set profile "HT Production" "Criminal Skills" block
+set profile "HT Production" "Drugs, Alcohol & Tobacco" block
+set profile "HT Production" "Education" block
+set profile "HT Production" "Finance & Investment" block
+set profile "HT Production" "Food & Drink" block
+set profile "HT Production" "Gambling" block
+set profile "HT Production" "Games" block
+set profile "HT Production" "Glamour & Intimate Apparel" block
+set profile "HT Production" "Government & Politics" block
+set profile "HT Production" "Hacking" block
+set profile "HT Production" "Hate Speech" block
+set profile "HT Production" "Health & Medicine" block
+set profile "HT Production" "Hobbies & Recreation" block
+set profile "HT Production" "Hosting Sites" block
+set profile "HT Production" "Job Search & Career Development" block
+set profile "HT Production" "Kids Sites" block
+set profile "HT Production" "Lifestyle & Culture" block
+set profile "HT Production" "Motor Vehicles" block
+set profile "HT Production" "News" block
+set profile "HT Production" "Personals & Dating" block
+set profile "HT Production" "Photo Searches" block
+set profile "HT Production" "Real Estate" block
+set profile "HT Production" "Reference" block
+set profile "HT Production" "Religion" block
+set profile "HT Production" "Remote Proxies" block
+set profile "HT Production" "Search Engines" block
+set profile "HT Production" "Sex Education" block
+set profile "HT Production" "Shopping" block
+set profile "HT Production" "Sports" block
+set profile "HT Production" "Streaming Media" block
+set profile "HT Production" "Travel" block
+set profile "HT Production" "Usenet News" block
+set profile "HT Production" "Violence" block
+set profile "HT Production" "Weapons" block
+set profile "HT Production" "Web-based Email" block
+set deny-message "Your page is blocked due to a security policy that prohibits access to $URL_CATEGORY"
+exit
+set policy id 63 from "DBS-Zone" to "Router-Zone"  "1ndbsaltweb01(10.88.1.170/32)" "172.21.8.0/24" "42443" permit log url-filter 
+set policy id 63
+set src-address "1ndbsotpweb01(10.88.1.169/32)"
+set dst-address "172.22.8.0/24"
+set service "65444"
+set log session-init
+exit
+set policy id 62 from "DMZ" to "DBS-Zone"  "DBSOTP(10.26.4.80)" "1ndbsaltweb01(10.88.1.170/32)" "42443" permit log 
+set policy id 62
+set src-address "Nile1(10.26.4.203/32)"
+set src-address "Nile2(10.26.4.209/32)"
+set src-address "resrc-bcast1(10.26.4.83)"
+set src-address "resrc-bcast2(10.26.4.182)"
+set src-address "resrc-rt1(10.26.4.84)"
+set src-address "Rocky-1"
+set src-address "smoky-1"
+set src-address "smoky-2"
+set src-address "smoky-3"
+set src-address "smoky-4"
+set dst-address "1ndbsotpweb01(10.88.1.169/32)"
+set service "65444"
+set log session-init
+exit
+set policy id 55 from "DMZ" to "Router-Zone"  "172.17.255.122/32(temp)" "172.17.255.113" "60443" permit log 
+set policy id 55
+set src-address "172.17.255.125"
+set src-address "Newton3"
+set src-address "DBS Servers"
+set dst-address "172.17.255.114"
+exit
+set policy id 46 from "Extranet-DMZ" to "DMZ"  "1netsmsc (192.168.200.101/32)" "Any" "ANY" permit log 
+set policy id 46 disable
+set policy id 46
+exit
+set policy id 45 from "Extranet-DMZ" to "Untrust"  "1netsmsc (192.168.200.101/32)" "Any" "ANY" nat src permit log 
+set policy id 45 disable
+set policy id 45
+exit
+set policy id 44 from "DMZ" to "Extranet-DMZ"  "Any" "1netresrc(192.168.200.21/32)" "ANY" permit log 
+set policy id 44 disable
+set policy id 44
+set dst-address "1netsmsc (192.168.200.101/32)"
+set dst-address "1netsmsc (192.168.200.102/32)"
+exit
+set policy id 42 name "Email Only" from "Extranet-DMZ" to "Untrust"  "cloud-1" "Any" "SMTP" nat src permit log 
+set policy id 42 disable
+set policy id 42
+set src-address "cloud-2"
+set log session-init
+exit
+set policy id 33 name "Monitoring Installation" from "Extranet-DMZ" to "Untrust"  "nagios-ws" "Any" "ANY" nat src permit log 
+set policy id 33 disable
+set policy id 33
+set log session-init
+exit
+set policy id 32 from "DBS-Zone" to "DMZ"  "1ndbsaltdb(10.88.1.172/32)" "Rocky-1" "8080" permit log count url-filter 
+set policy id 32
+set src-address "1ndbsaltweb01(10.88.1.170/32)"
+set src-address "1ndbsotpdb(10.88.1.171/32)"
+set src-address "1ndbsotpweb01(10.88.1.169/32)"
+exit
+set policy id 30 from "DBS-Zone" to "DMZ"  "DBS-Zone(10.88.1.0/24)" "10.26.4.249" "NTP" permit log count url-filter 
+set policy id 30
+exit
+set policy id 27 name "To restrict only to IO Resource" from "Extranet-DMZ" to "Untrust"  "resrc-1" "Any" "ANY" nat src permit log 
+set policy id 27 disable
+set policy id 27
+exit
+set policy id 17 from "Untrust" to "Extranet-DMZ"  "1nJumpHost" "Any" "ANY" permit log 
+set policy id 17 disable
+set policy id 17
+set log session-init
+exit
+set policy id 16 from "Untrust" to "Untrust"  "1nJumpHost" "Any" "ANY" nat src permit log 
+set policy id 16 disable
+set policy id 16
+set log session-init
+exit
+set policy id 15 from "Untrust" to "Untrust"  "Any" "Any" "SSHJUMP" nat src permit log 
+set policy id 15
+set log session-init
+exit
+set policy id 29 from "DMZ" to "DBS-Zone"  "Nagios(10.26.4.196 )" "DBS-Zone(10.88.1.0/24)" "ICMP-ANY" permit log 
+set policy id 29
+set service "Nagios(5666)"
+set log session-init
+exit
+set policy id 13 from "DMZ" to "DBS-Zone"  "Nongsngse-DMZ-FW(10.26.4.248/32)" "1ndbsaltdb(10.88.1.172/32)" "3306" permit log 
+set policy id 13
+set dst-address "1ndbsotpdb(10.88.1.171/32)"
+exit
+set policy id 12 from "DBS-Zone" to "DMZ"  "1ndbsaltweb01(10.88.1.170/32)" "Nile2(10.26.4.209/32)" "8009" permit log count url-filter 
+set policy id 12
+set service "9009"
+set service "9080"
+set service "9090"
+exit
+set policy id 11 from "DBS-Zone" to "DMZ"  "1ndbsotpweb01(10.88.1.169/32)" "1nnapdbsotpsvr1(10.26.4.80/32)" "8009" permit log count url-filter 
+set policy id 11
+set dst-address "Nile1(10.26.4.203/32)"
+set service "8081"
+set service "8082"
+set service "9009"
+exit
+set policy id 9 from "DMZ" to "DMZ"  "172.17.252.12/30" "VIP(10.26.4.169)" "60443" permit log 
+set policy id 9
+set src-address "172.17.252.188/30"
+set src-address "172.21.8.0/24"
+set src-address "172.22.8.0/24"
+set src-address "Newton3"
+set dst-address "VIP(10.26.4.170)"
+exit
+set policy id 2 from "Untrust" to "Trust"  "Any" "Any" "ANY" deny log 
+set policy id 2
+exit
+set policy id 3 from "Untrust" to "Untrust"  "Any" "Any" "ANY" reject log 
+set policy id 3 disable
+set policy id 3
+exit
+set policy id 10 from "DMZ" to "DBS-Zone"  "1nnapdbsotpsvr1(10.26.4.80/32)" "1ndbsaltdb(10.88.1.172/32)" "3306" permit log 
+set policy id 10
+set src-address "Nile1(10.26.4.203/32)"
+set src-address "Nile2(10.26.4.209/32)"
+set dst-address "1ndbsotpdb(10.88.1.171/32)"
+exit
+set policy id 5 from "DMZ" to "DBS-Zone"  "1nnapgateway" "Any" "ANY" permit log 
+set policy id 5
+set src-address "Newton3"
+exit
+set policy id 6 from "DMZ" to "DBS-Zone"  "Any" "Any" "ANY" deny log 
+set policy id 6
+exit
+set policy id 7 from "DBS-Zone" to "DMZ"  "Any" "yumserver6" "HTTP" permit log count url-filter 
+set policy id 7
+set service "ICMP-ANY"
+exit
+set policy id 60 from "DBS-Zone" to "DMZ"  "1ndbsaltweb01(10.88.1.170/32)" "172.21.8.150/32" "42443" permit log url-filter 
+set policy id 60
+set src-address "1ndbsotpweb01(10.88.1.169/32)"
+set dst-address "172.21.8.74/32"
+set dst-address "172.22.8.53/32"
+set service "65444"
+set log session-init
+exit
+set policy id 8 from "DBS-Zone" to "DMZ"  "Any" "Any" "ANY" permit log count url-filter 
+set policy id 8
+exit
+set policy id 21 from "Extranet-DMZ" to "Untrust"  "Any" "1nJumpHost" "DNS" permit log 
+set policy id 21 disable
+set policy id 21
+set log session-init
+exit
+set policy id 28 from "Untrust" to "Extranet-DMZ"  "Any" "Any" "ANY" deny log 
+set policy id 28 disable
+set policy id 28
+set log session-init
+exit
+set policy id 31 from "Untrust" to "DMZ"  "1nJumpHost" "Any" "ANY" permit log 
+set policy id 31 disable
+set policy id 31
+set log session-init
+exit
+set policy id 56 name "Cross DC" from "DMZ" to "Router-Zone"  "Any" "Any" "ANY" permit log 
+set policy id 56
+exit
+set policy id 59 from "Router-Zone" to "DBS-Zone"  "10.26.4.195" "MIP(172.17.255.113)" "60443" permit log 
+set policy id 59
+set src-address "172.17.255.122"
+set src-address "172.17.255.125"
+set src-address "172.21.8.0/24"
+set src-address "172.22.8.0/24"
+set dst-address "MIP(172.17.255.114)"
+exit
+set policy id 61 from "Router-Zone" to "DBS-Zone"  "Any" "Any" "ANY" permit log 
+set policy id 61
+exit
+set policy id 64 name "Temp Rule for crossDC" from "Router-Zone" to "Extranet-DMZ"  "Any" "Any" "ANY" permit log 
+set policy id 64
+set log session-init
+exit
+set policy id 65 name "Cross dc from IO" from "Router-Zone" to "DMZ"  "Any" "Any" "ANY" permit log 
+set policy id 65
+set log session-init
+exit
+set syslog config "10.26.4.198"
+set syslog config "10.26.4.198" facilities local0 local0
+set syslog enable
+set log module system level emergency destination console
+set log module system level alert destination console
+set log module system level critical destination console
+set log module system level error destination console
+set log module system level warning destination console
+set log module system level notification destination console
+set log module system level information destination console
+set log module system level debugging destination console
+set log module system level error destination webtrends
+set log module system level warning destination webtrends
+set log module system level information destination webtrends
+set log module system level debugging destination webtrends
+set log serial-number enable
+set firewall log-self
+set firewall log-self ike
+set firewall log-self snmp
+set nsmgmt bulkcli reboot-timeout 60
+set ssh version v2
+set ssh enable
+set config lock timeout 5
+unset license-key auto-update
+set telnet client enable
+set ssl port 8011
+set ssl encrypt 3des sha-1
+set ntp server "10.26.4.249"
+set ntp server src-interface "ethernet0/1"
+set ntp server backup1 "time.apple.asia.com"
+set ntp interval 1
+set ntp max-adjustment 120
+set snmp community "admin" Read-Write Trap-on traffic version any  
+set snmp host "admin" 192.168.1.5/32  trap v2
+set snmp host "admin" 192.168.1.3/32  trap v2
+set snmp location "Singapore"
+set snmp contact "Operations"
+set snmp name "nongsngse2"
+set snmp rfc1213 ipforwarding enable
+set snmp port listen 161
+set snmp port trap 162
+set snmpv3 local-engine id "0162082009000634"
+set snmpv3 community wholesale tag wholesale
+
+set vrouter "untrust-vr"
+set route 0.0.0.0/0 interface ethernet0/3 gateway 118.201.210.133
+set route 10.4.0.0/24 interface ethernet0/1 gateway 10.26.4.248
+set route 172.17.252.12/30 interface ethernet0/1 gateway 10.26.4.253
+set route 172.17.252.188/30 interface ethernet0/1 gateway 10.26.4.253
+set route 172.21.8.90/32 interface ethernet0/3.2 gateway 172.17.255.126
+set route 172.21.8.91/32 interface ethernet0/3.2 gateway 172.17.255.126
+set route 172.22.8.0/24 interface ethernet0/3.2 gateway 172.17.255.123
+set route 172.21.8.84/32 interface ethernet0/3.2 gateway 172.17.255.126
+set route 172.21.8.0/24 interface ethernet0/3.2 gateway 172.17.255.126
+set route 192.168.201.0/24 interface ethernet0/3.1 gateway 172.28.4.1
+set route 192.168.200.0/24 interface ethernet0/1 gateway 10.26.4.254
+set route 10.6.0.0/24 interface ethernet0/3.1 gateway 172.28.4.1 description "To IO Private"
+exit
+set vrouter "trust-vr"
+unset add-default-route
+set route 0.0.0.0/0 vrouter "untrust-vr" preference 20 metric 1
+exit
+set vrouter "untrust-vr"
+exit
+set vrouter "trust-vr"
+exit
